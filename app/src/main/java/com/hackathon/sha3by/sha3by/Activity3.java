@@ -1,6 +1,8 @@
 package com.hackathon.sha3by.sha3by;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
@@ -52,6 +54,10 @@ public class Activity3 extends AppCompatActivity {
         //Remove notification bar
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
+        
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        String userName = sharedPref.getString("Name", "");
+
 
         setContentView(R.layout.activity3);
         Button fab =

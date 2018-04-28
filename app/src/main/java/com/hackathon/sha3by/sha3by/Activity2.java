@@ -20,7 +20,7 @@ public class Activity2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
-        String highScore = sharedPref.getString("Name", "");
+        String userName = sharedPref.getString("Name", "");
 
         super.onCreate(savedInstanceState);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
