@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, Activity2.class));
+                addUser();
             }
         });
     }
@@ -37,8 +38,7 @@ public class MainActivity extends AppCompatActivity {
         RadioButton ab = (RadioButton) findViewById(R.id.arabicButton);
         RadioButton eb = (RadioButton) findViewById(R.id.englishButton);
 
-        MessageStore.getInstance().firebasedatabase.getReference("users").child("a")
-                .push()
+        MessageStore.getInstance().firebasedatabase.getReference("users").push()
                 .setValue(new User(name.getText().toString(), ab.isChecked(), eb.isChecked())
                 );
 
