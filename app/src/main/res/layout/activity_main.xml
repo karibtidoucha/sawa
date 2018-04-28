@@ -25,18 +25,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="137dp"
+        android:layout_alignStart="@+id/second_activity"
+        android:layout_marginTop="112dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Name"/>
+        android:hint="Name"
+        android:inputType="textPersonName" />
 
     <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/second_activity"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="79dp"
+        android:layout_marginBottom="118dp"
         android:orientation="horizontal">
 
 
@@ -71,9 +71,7 @@
     <RadioGroup
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="108dp"
+        android:layout_centerInParent="true"
         android:orientation="horizontal">
 
         <RadioButton

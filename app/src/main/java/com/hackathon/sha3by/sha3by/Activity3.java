@@ -40,10 +40,6 @@ import android.view.Window;
 import android.view.WindowManager;
 
 public class Activity3 extends AppCompatActivity {
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +50,7 @@ public class Activity3 extends AppCompatActivity {
         //Remove notification bar
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
-        
+
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         String userName = sharedPref.getString("Name", "");
 
