@@ -12,29 +12,28 @@
     tools:context="com.hackathon.sha3by.sha3by.Activity3">
 
 
+
+    <ListView
+        android:id="@+id/messages"
+        android:layout_below="@+id/b_send"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+    />
+
     <Button
         android:id="@+id/b_send"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/input"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Input"
+
         android:id="@+id/input"
         />
 
 
-
-    <ListView
-        android:id="@+id/messages"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <TextView
-            android:id="@+id/message_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-    </ListView>
 
 
 </RelativeLayout>

@@ -31,8 +31,14 @@ public class Activity3 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity3);
+        //Remove title bar
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
+        //Remove notification bar
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+
+        setContentView(R.layout.activity3);
         Button fab =
                 (Button)findViewById(R.id.b_send);
 
@@ -42,9 +48,8 @@ public class Activity3 extends AppCompatActivity {
             public void onClick(View view) {
                 EditText input = (EditText)findViewById(R.id.input);
 
-                // Read the input field and push a new instance
-                // of ChatMessage to the Firebase database
-                MessageStore.getInstance().firebasedatabase.getReference()
+
+                MessageStore.getInstance().firebasedatabase.getReference("message").child("a").child("b")
                         .push()
                         .setValue(new Message(input.getText().toString())
                         );
@@ -59,7 +64,7 @@ public class Activity3 extends AppCompatActivity {
 
 
         FirebaseListOptions<Message> firebaseListOptions = new FirebaseListOptions.Builder<Message>()
-                .setQuery(query, Message.class).setLayout(android.R.layout.simple_list_item_1).setLifecycleOwner(this).build();
+                .setQuery(query, Message.class).setLayout(R.layout.message).setLifecycleOwner(this).build();
 
         ListAdapter firebaseListAdapter = new FirebaseListAdapter<Message>(firebaseListOptions)
         {
@@ -81,12 +86,6 @@ public class Activity3 extends AppCompatActivity {
         messagelist
                 .setAdapter(firebaseListAdapter);
 
-        //Remove title bar
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-        //Remove notification bar
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-        setContentView(R.layout.activity3);
         }
 }
