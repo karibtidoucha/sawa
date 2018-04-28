@@ -6,14 +6,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.firebase.ui.database.FirebaseListAdapter;
+import com.firebase.ui.database.FirebaseListOptions;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.FirebaseDatabase;
 
 import android.view.View;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 import java.text.DateFormat;
 import android.view.Window;
@@ -21,16 +25,17 @@ import android.view.WindowManager;
 
 public class Activity3 extends AppCompatActivity {
 
-    ListView messagelist;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity2);
+        setContentView(R.layout.activity3);
 
         Button fab =
-                (Button)findViewById(R.id.fab);
+                (Button)findViewById(R.id.b_send);
+
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,41 +44,42 @@ public class Activity3 extends AppCompatActivity {
 
                 // Read the input field and push a new instance
                 // of ChatMessage to the Firebase database
-                MessageStore.getInstance
+                MessageStore.getInstance().firebasedatabase.getReference()
                         .push()
-                        .setValue(new Message(input.getText().toString(),
-                                FirebaseApp.getInstance()
-                                        .getCurrentUser()
-                                        .getDisplayName())
+                        .setValue(new Message(input.getText().toString())
                         );
 
                 // Clear the input
                 input.setText("");
             }
         });
-        ListView messagelist = (ListView)findViewById(R.id.messages);
 
-        adapter = new FirebaseListAdapter<Message>(this, Message.class,
-                R.layout.activity3, MessageStore.getInstance().getReference()){
 
+       Query query = MessageStore.getInstance().firebasedatabase.getReference("message").child("a").child("b");
+
+
+        FirebaseListOptions<Message> firebaseListOptions = new FirebaseListOptions.Builder<Message>()
+                .setQuery(query, Message.class).setLayout(android.R.layout.simple_list_item_1).setLifecycleOwner(this).build();
+
+        ListAdapter firebaseListAdapter = new FirebaseListAdapter<Message>(firebaseListOptions)
+        {
             @Override
             protected void populateView(View v, Message model, int position) {
                 // Get references to the views of message.xml
-                TextView messageText = (TextView)v.findViewById(R.id.message_text);
-                TextView messageUser = (TextView)v.findViewById(R.id.message_user);
-                TextView messageTime = (TextView)v.findViewById(R.id.message_time);
+                TextView messageText = (TextView) v.findViewById(R.id.message_text);
+
 
                 // Set their text
-                messageText.setText(model.getMessageText());
-                messageUser.setText(model.getMessageUser());
+                messageText.setText(model.messageText);
 
-                // Format the date before showing it
-                messageTime.setText(DateFormat.format("dd-MM-yyyy (HH:mm:ss)",
-                        model.getMessageTime()));
-
+            }
         };
 
-        messagelist.setAdapter(adapter);
+
+        final ListView messagelist = (ListView)findViewById(R.id.messages);
+
+        messagelist
+                .setAdapter(firebaseListAdapter);
 
         //Remove title bar
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);

@@ -11,44 +11,30 @@
     android:paddingTop="20dp"
     tools:context="com.hackathon.sha3by.sha3by.Activity3">
 
-<<<<<<< HEAD
-    <android.support.design.widget.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:src="@drawable/ic_send_black_24dp"
-        android:id="@+id/fab"
-        android:tint="@android:color/white"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        app:fabSize="mini" />
 
-    <android.support.design.widget.TextInputLayout
+    <Button
+        android:id="@+id/b_send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toLeftOf="@id/fab"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        >
+        android:hint="Input"
+        android:id="@+id/input"
+        />
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Input"
-            android:id="@+id/input"
-            />
-    </android.support.design.widget.TextInputLayout>
-=======
+
+
     <ListView
         android:id="@+id/messages"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
+        <TextView
+            android:id="@+id/message_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
     </ListView>
 
->>>>>>> 414aa8ddf05055e7e01a05eb9f956727a37e1580
 
 </RelativeLayout>
