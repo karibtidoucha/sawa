@@ -2,20 +2,25 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/activity_3"
+
     android:paddingBottom="20dp"
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
     android:paddingTop="20dp"
-    tools:context="com.hackathon.sha3by.sha3by.Activity3">
+
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.hackathon.sha3by.sha3by.Activity3"
+
+>
 
     <LinearLayout
-        android:id="@+id/ll1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/ll1"
+        >
         <TextView
             app:layout_constraintTop_toTopOf="parent"
             android:layout_width="wrap_content"
@@ -27,12 +32,9 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/ll2"
-
-        android:orientation="vertical"
-        android:layout_below="@+id/ll1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-
+        android:orientation="vertical"
         android:clipToPadding="false"
         android:focusableInTouchMode="true"
         tools:context="com.hackathon.sha3by.sha3by.Activity3"
@@ -46,12 +48,10 @@
         <ListView
             android:id="@+id/messages"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:divider="#fff"
             android:layout_weight="2"
-
-
-
+            android:transcriptMode="alwaysScroll"
             />
 
         <LinearLayout
@@ -65,11 +65,11 @@
 
         >
             <EditText
+                android:id="@+id/input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:hint="Input"
-                android:id="@+id/input"
                 android:ems="10"
                 android:paddingHorizontal="10dp"
 

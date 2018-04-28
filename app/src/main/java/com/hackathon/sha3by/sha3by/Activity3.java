@@ -4,14 +4,18 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextPaint;
+import android.text.TextWatcher;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
+import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,24 +34,21 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.text.Editable;
 
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
-import java.text.DateFormat;
 
-import android.view.Window;
 import android.view.WindowManager;
 
 public class Activity3 extends AppCompatActivity {
+
+    private String lastText = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        //Remove title bar
-//        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-
-        //Remove notification bar
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
 
@@ -56,20 +57,50 @@ public class Activity3 extends AppCompatActivity {
 
 
         setContentView(R.layout.activity3);
-        Button fab =
-                (Button) findViewById(R.id.b_send);
+        Button fab = findViewById(R.id.b_send);
+
+
+        final EditText input = (EditText) findViewById(R.id.input);
+        input.addTextChangedListener(new TextWatcher() {
+
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                if (s.toString().length()>3 && !(s.toString().equals(lastText) )){
+                    lastText = s.toString();
+                    Log.e("TEST", s.toString());
+                    Spannable spannable=new SpannableString(s.toString());
+                    spannable.setSpan(new StyleSpan(Typeface.BOLD), 0, 2, 0);
+                    input.setText(spannable);
+                }
+
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start,
+                                          int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start,
+                                      int before, int count) {
+            }
+        });
 
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditText input = (EditText) findViewById(R.id.input);
 
 
-                MessageStore.getInstance().firebasedatabase.getReference("message").child("a").child("b")
-                        .push()
-                        .setValue(new Message(input.getText().toString())
-                        );
+                if (!input.getText().toString().equals("")) {
+
+                    MessageStore.getInstance().firebasedatabase.getReference("message").child("a").child("b")
+                            .push()
+                            .setValue(new Message(input.getText().toString())
+                            );
+                }
 
                 // Clear the input
                 input.setText("");
@@ -86,18 +117,12 @@ public class Activity3 extends AppCompatActivity {
         ListAdapter firebaseListAdapter = new FirebaseListAdapter<Message>(firebaseListOptions) {
             @Override
             protected void populateView(View v, Message model, int position) {
-                // Get references to the views of message.xml
-//                TextView messageText = (TextView) v.findViewById(R.id.message_text);
-//                // Set their text
-//                messageText.setText(model.messageText);
-
 
                 String[] messageSplit = model.messageText.split(" ");
                 SpannableString ss = new SpannableString(model.messageText);
 
 
                 TextView tv = v.findViewById(R.id.tv);
-
 
                 int counter =0;
                 for (String i : messageSplit) {
@@ -106,6 +131,7 @@ public class Activity3 extends AppCompatActivity {
                         @Override
                         public void onClick(View view) {
                             Log.e("word",word);
+                            //push out a pop up
                         }
                         @Override
                         public void updateDrawState(TextPaint ds) {
@@ -120,36 +146,13 @@ public class Activity3 extends AppCompatActivity {
 
             }
 
-
-
-
         };
 
 
-        final ListView messagelist = (ListView) findViewById(R.id.messages);
+        final ListView messagelist = findViewById(R.id.messages);
 
         messagelist
                 .setAdapter(firebaseListAdapter);
 
-
     }
 }
-
-//
-//    SpannableString ss = new SpannableString("Android is a Software stack");
-//    ClickableSpan clickableSpan = new ClickableSpan() {
-//        @Override
-//        public void onClick(View textView) {
-//            startActivity(new Intent(MyActivity.this, NextActivity.class));
-//        }
-//    };
-//    ss.setSpan(clickableSpan,22,27,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-////where 22 and 27 are the starting and ending index of the String. Now word stack is clickable
-//// onClicking stack it will open NextActiivty
-//
-//            TextView textView=(TextView)findViewById(R.id.hello);
-//            textView.setText(ss);
-//            textView.setMovementMethod(LinkMovementMethod.getInstance());
-
-
-
