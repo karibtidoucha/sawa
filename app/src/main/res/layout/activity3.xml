@@ -9,17 +9,7 @@
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
     android:paddingTop="20dp"
-    tools:context="com.hackathon.sha3by.sha3by.MainActivity">
-
-   <TextView
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:text="Activity1"/>
-    <Button
-        android:id="@+id/second_activity"
-        android:text="Second Activity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    tools:context="com.hackathon.sha3by.sha3by.Activity2">
 
 
 </RelativeLayout>
