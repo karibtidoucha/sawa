@@ -20,7 +20,7 @@
         android:text="Sign Up" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/personName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -40,7 +40,7 @@
 
 
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/arabicButton"
             android:layout_width="86dp"
             android:layout_height="wrap_content"
             android:layout_alignEnd="@+id/textView"
@@ -49,7 +49,7 @@
             android:text="English" />
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/englishButton"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/textView"
@@ -94,7 +94,8 @@
         android:text="Create an Account"
         android:textColor="?attr/colorPrimary"
         android:textSize="36sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:onClick="addUser"/>
 
     <RadioGroup
         android:layout_width="match_parent"
