@@ -36,10 +36,11 @@ public class MainActivity extends AppCompatActivity {
     public void addUser(){
         EditText name = (EditText) findViewById(R.id.personName);
         RadioButton ab = (RadioButton) findViewById(R.id.arabicButton);
-        RadioButton eb = (RadioButton) findViewById(R.id.englishButton);
+
+        RadioButton b4 = (RadioButton) findViewById(R.id.radioButton4);
 
         MessageStore.getInstance().firebasedatabase.getReference("users").push()
-                .setValue(new User(name.getText().toString(), ab.isChecked(), eb.isChecked())
+                .setValue(new User(name.getText().toString(), ab.isChecked() ? 1 : 0 , b4.isChecked() ? 0 :1   )
                 );
 
 

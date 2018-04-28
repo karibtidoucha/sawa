@@ -29,7 +29,7 @@
         android:layout_marginTop="137dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name" />
+        android:hint="Name"/>
 
     <RadioGroup
         android:layout_width="wrap_content"
@@ -66,5 +66,29 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         app:srcCompat="@mipmap/sawa_two" />
+
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="108dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radioButton4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/avatar3" />
+
+        <RadioButton
+            android:id="@+id/radioButton5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/hij" />
+    </RadioGroup>
 
 </RelativeLayout>

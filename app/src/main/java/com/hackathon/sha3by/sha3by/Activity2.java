@@ -17,7 +17,7 @@ public class Activity2 extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        List<User> users =new ArrayList<>();
+        /*List<User> users =new ArrayList<>();
         users.add(new User("Mohamed",true,false,1));
         users.add(new User("Ferida",false,true,0));
         users.add(new User("Ling",false,true,1));
@@ -29,7 +29,7 @@ public class Activity2 extends AppCompatActivity {
             }
 
         }
-
+*/
 
         super.onCreate(savedInstanceState);
         //Remove title bar
