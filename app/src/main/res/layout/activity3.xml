@@ -9,7 +9,7 @@
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
     android:paddingTop="20dp"
-    tools:context="com.hackathon.sha3by.sha3by.Activity2">
+    tools:context="com.hackathon.sha3by.sha3by.Activity3">
 
 
 </RelativeLayout>
