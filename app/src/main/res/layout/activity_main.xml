@@ -11,15 +11,20 @@
     android:paddingTop="20dp"
     tools:context="com.hackathon.sha3by.sha3by.MainActivity">
 
-   <TextView
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:text="Activity1"/>
     <Button
         android:id="@+id/second_activity"
-        android:text="Second Activity"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:text="Second Activity" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/sawa_one" />
 
 
 </RelativeLayout>

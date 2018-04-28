@@ -11,6 +11,7 @@
     android:paddingTop="20dp"
     tools:context="com.hackathon.sha3by.sha3by.Activity3">
 
+<<<<<<< HEAD
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,5 +40,15 @@
             android:id="@+id/input"
             />
     </android.support.design.widget.TextInputLayout>
+=======
+    <ListView
+        android:id="@+id/messages"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    </ListView>
+
+>>>>>>> 414aa8ddf05055e7e01a05eb9f956727a37e1580
 
 </RelativeLayout>
