@@ -17,7 +17,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="Sign Up" />
+        android:text="Sign Up"
+        />
 
     <EditText
         android:id="@+id/personName"
@@ -28,65 +29,35 @@
         android:layout_marginTop="137dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name" />
+        android:hint="Name"/>
 
-    <RadioButton
-        android:id="@+id/arabicButton"
-        android:layout_width="100dp"
+    <RadioGroup
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/second_activity"
-        android:layout_alignEnd="@+id/button5"
-        android:text="Arabic" />
-
-    <RadioButton
-        android:id="@+id/englishButton"
-        android:layout_width="86dp"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/radioButton"
-        android:layout_toEndOf="@+id/textView2"
-        android:text="English" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="86dp"
-        android:layout_height="40dp"
-        android:layout_above="@+id/radioButton"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="Language" />
+        android:layout_marginBottom="79dp"
+        android:orientation="horizontal">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="66dp"
-        android:layout_height="106dp"
-        android:layout_above="@+id/textView2"
-        android:layout_alignStart="@+id/editText"
-        app:srcCompat="@mipmap/avatar2" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="75dp"
-        android:layout_height="112dp"
-        android:layout_above="@+id/textView2"
-        android:layout_alignStart="@+id/radioButton2"
-        app:srcCompat="@mipmap/avatar1" />
+        <RadioButton
+            android:id="@+id/englishButton"
+            android:layout_width="86dp"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/textView"
+            android:layout_centerVertical="true"
+            android:layout_weight="1"
+            android:text="English" />
 
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="63dp"
-        android:layout_height="103dp"
-        android:layout_above="@+id/textView2"
-        android:layout_alignStart="@+id/editText"
-        android:text="Button"
-        android:visibility="invisible" />
-
-    <Button
-        android:id="@+id/button7"
-        android:layout_width="75dp"
-        android:layout_height="111dp"
-        android:layout_above="@+id/textView2"
-        android:layout_alignStart="@+id/radioButton2"
-        android:text="Button"
-        android:visibility="invisible" />
+        <RadioButton
+            android:id="@+id/arabicButton"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/textView"
+            android:layout_centerVertical="true"
+            android:layout_weight="1"
+            android:text="Arabic" />
+    </RadioGroup>
 
     <ImageButton
         android:id="@+id/imageButton"
@@ -96,28 +67,28 @@
         android:layout_centerHorizontal="true"
         app:srcCompat="@mipmap/sawa_two" />
 
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/imageView2"
-        android:layout_centerHorizontal="true"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:text="Password" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+    <RadioGroup
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="94dp"
-        android:text="Create an Account"
-        android:textColor="?attr/colorPrimary"
-        android:textSize="36sp"
-        android:textStyle="bold"
-        android:onClick="addUser"/>
+        android:layout_marginBottom="108dp"
+        android:orientation="horizontal">
 
+        <RadioButton
+            android:id="@+id/radioButton4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/avatar3" />
+
+        <RadioButton
+            android:id="@+id/radioButton5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/hij" />
+    </RadioGroup>
 
 </RelativeLayout>
