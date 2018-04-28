@@ -19,11 +19,17 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.GenericTypeIndicator;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Activity2 extends AppCompatActivity {
-    private List<User> users;
+    private List<User> users = new ArrayList<>();
+    UserAdapter adapter = new UserAdapter(this, users);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +37,7 @@ public class Activity2 extends AppCompatActivity {
         String userName = sharedPref.getString("Name", "");
         int arabic = sharedPref.getInt("Arabic", 0);
         int avatar = sharedPref.getInt("Avatar", 0);
+        User currUser = new User(userName, arabic, avatar);
 
         super.onCreate(savedInstanceState);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -38,14 +45,6 @@ public class Activity2 extends AppCompatActivity {
 
         setContentView(R.layout.activity2);
 
-
-        users =new ArrayList<>();
-        users.add(new User("Mohamed",0,1));
-        users.add(new User("Ferida",0,0));
-        users.add(new User("Ling",1,1));
-        User self=new User ("Farah",1,0);
-
-        UserAdapter adapter=new UserAdapter(this, users);
         ListView listView = findViewById(R.id.listview1);
         listView.setAdapter(adapter);
 
@@ -58,6 +57,26 @@ public class Activity2 extends AppCompatActivity {
                 startActivity(new Intent(Activity2.this, Activity3.class));
             }
         });
+
+        MessageStore.getInstance().firebasedatabase.getReference().child("users").addValueEventListener(
+                new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        users.clear();
+                        for(DataSnapshot userValue: dataSnapshot.getChildren()){
+                            User user = userValue.getValue(User.class);
+                            users.add(user);
+                        }
+                        adapter.notifyDataSetChanged();
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                }
+        );
+
     }
 
     public class UserAdapter extends ArrayAdapter<User> {
