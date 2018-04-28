@@ -3,6 +3,7 @@ package com.hackathon.sha3by.sha3by;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,13 +12,13 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RelativeLayout;
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
 
         //Remove title bar
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -37,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
     }
 
     public void addUser(){
@@ -56,6 +56,9 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("Name", name.getText().toString());
+        editor.putInt("Arabic", ab.isChecked() ? 1 : 0);
+        editor.putInt("Avatar", b4.isChecked() ? 0 : 1);
+
         editor.commit();
 
     }

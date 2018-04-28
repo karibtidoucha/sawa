@@ -1,24 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingBottom="20dp"
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
     android:paddingTop="20dp"
     tools:context="com.hackathon.sha3by.sha3by.Activity2">
-
-    <ListView
-        android:id="@+id/listview1"
-        android:layout_width="match_parent"
-        android:layout_height="183dp"
-        android:layout_below="@+id/textView4"
-        android:layout_centerHorizontal="true">
-
-    </ListView>
 
     <Button
         android:id="@+id/third_activity"
@@ -34,6 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         app:srcCompat="@mipmap/avatar3" />
 
@@ -42,17 +35,23 @@
         android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/third_activity"
+        android:layout_alignRight="@+id/third_activity"
         android:layout_below="@+id/imageView3"
         android:text="Name" />
 
     <TextView
-        android:id="@+id/textView4"
-        android:layout_width="236dp"
-        android:layout_height="88dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignTop="@+id/imageView3"
-        android:layout_marginStart="10dp"
-        android:text="Writing" />
+        android:id="@+id/textView2"
+        android:layout_width="343dp"
+        android:layout_height="wrap_content"
+        android:text="Users Matching Your Skills"
+        android:textColor="?attr/colorPrimary"
+        android:textSize="24sp" />
 
+    <ListView
+        android:id="@+id/listview1"
+        android:layout_width="match_parent"
+        android:layout_height="275dp"
+        android:layout_centerInParent="true">
 
-</RelativeLayout>
+    </ListView>
+</LinearLayout>

@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/logoColor"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,8 +10,8 @@
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
     android:paddingTop="20dp"
-    tools:context="com.hackathon.sha3by.sha3by.MainActivity">
-
+    tools:context="com.hackathon.sha3by.sha3by.MainActivity"
+    >
     <Button
         android:id="@+id/second_activity"
         android:layout_width="202dp"
@@ -28,6 +29,7 @@
         android:layout_alignStart="@+id/second_activity"
         android:layout_marginTop="112dp"
         android:ems="10"
+        android:backgroundTint="@color/white"
         android:hint="Name"
         android:inputType="textPersonName" />
 
@@ -47,6 +49,7 @@
             android:layout_alignEnd="@+id/textView"
             android:layout_centerVertical="true"
             android:layout_weight="1"
+            android:buttonTint="@color/white"
             android:text="English" />
 
         <RadioButton
@@ -56,6 +59,7 @@
             android:layout_alignStart="@+id/textView"
             android:layout_centerVertical="true"
             android:layout_weight="1"
+            android:buttonTint="@color/white"
             android:text="Arabic" />
     </RadioGroup>
 
@@ -79,6 +83,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:buttonTint="@color/white"
             android:drawableTop="@mipmap/avatar3" />
 
         <RadioButton
@@ -86,6 +91,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:buttonTint="@color/white"
             android:drawableTop="@mipmap/hij" />
     </RadioGroup>
 
