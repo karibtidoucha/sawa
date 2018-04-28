@@ -88,17 +88,17 @@ public class Activity3 extends AppCompatActivity {
                 TextView tv = v.findViewById(R.id.tv);
 
 
-                int counter =0;
-                for (String i : messageSplit) {
-                    final String word = i;
-                    ss.setSpan(new ClickableSpan() {
-                        @Override
-                        public void onClick(View view) {
-                            Log.e("word",word);
-                        }
-                    }, counter,counter+i.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    counter+=i.length()+1;
-                }
+//                int counter =0;
+//                for (String i : messageSplit) {
+//                    final String word = i;
+//                    ss.setSpan(new ClickableSpan() {
+//                        @Override
+//                        public void onClick(View view) {
+//                            Log.e("word",word);
+//                        }
+//                    }, counter,counter+i.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+//                    counter+=i.length()+1;
+//                }
 
                 tv.setText(ss);
 
