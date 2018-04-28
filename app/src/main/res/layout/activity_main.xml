@@ -21,7 +21,7 @@
         />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/personName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -41,7 +41,7 @@
 
 
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/englishButton"
             android:layout_width="86dp"
             android:layout_height="wrap_content"
             android:layout_alignEnd="@+id/textView"
@@ -50,7 +50,7 @@
             android:text="English" />
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/arabicButton"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/textView"
@@ -59,24 +59,6 @@
             android:text="Arabic" />
     </RadioGroup>
 
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="65dp"
-        android:layout_height="76dp"
-        android:layout_alignBottom="@+id/imageView"
-        android:layout_alignEnd="@+id/second_activity"
-        android:text="Button"
-        android:visibility="invisible" />
-
-    <Button
-        android:id="@+id/button7"
-        android:layout_width="75dp"
-        android:layout_height="80dp"
-        android:layout_alignStart="@+id/imageView2"
-        android:layout_alignTop="@+id/imageView2"
-        android:text="Button"
-        android:visibility="invisible" />
-
     <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="193dp"
@@ -84,5 +66,5 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         app:srcCompat="@mipmap/sawa_two" />
-    
+
 </RelativeLayout>
