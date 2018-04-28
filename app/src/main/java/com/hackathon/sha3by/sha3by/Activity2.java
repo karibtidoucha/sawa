@@ -29,6 +29,8 @@ public class Activity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         String userName = sharedPref.getString("Name", "");
+        int arabic = sharedPref.getInt("Arabic", 0);
+        int avatar = sharedPref.getInt("Avatar", 0);
 
         super.onCreate(savedInstanceState);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
