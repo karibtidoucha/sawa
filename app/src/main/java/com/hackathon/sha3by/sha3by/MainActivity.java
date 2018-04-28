@@ -1,6 +1,8 @@
 package com.hackathon.sha3by.sha3by;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         //Remove title bar
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
+
         //Remove notification bar
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
@@ -29,8 +32,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, Activity2.class));
                 addUser();
+
             }
         });
+
+
     }
 
     public void addUser(){
@@ -42,7 +48,10 @@ public class MainActivity extends AppCompatActivity {
         MessageStore.getInstance().firebasedatabase.getReference("users").push()
                 .setValue(new User(name.getText().toString(), ab.isChecked() ? 1 : 0 , b4.isChecked() ? 0 :1   )
                 );
-
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("Name", name.getText().toString());
+        editor.commit();
 
     }
 }

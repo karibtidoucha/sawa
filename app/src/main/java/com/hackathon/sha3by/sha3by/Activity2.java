@@ -1,5 +1,7 @@
 package com.hackathon.sha3by.sha3by;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
@@ -17,19 +19,8 @@ public class Activity2 extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        /*List<User> users =new ArrayList<>();
-        users.add(new User("Mohamed",true,false,1));
-        users.add(new User("Ferida",false,true,0));
-        users.add(new User("Ling",false,true,1));
-        User self=new User ("Farah",false,true,0);
-
-        for (int i =0; i<=3; i++){
-            if(users[i].ab==self.ab){
-
-            }
-
-        }
-*/
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        String highScore = sharedPref.getString("Name", "");
 
         super.onCreate(savedInstanceState);
         //Remove title bar
