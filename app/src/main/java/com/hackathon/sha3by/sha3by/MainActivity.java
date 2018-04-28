@@ -37,9 +37,9 @@ public class MainActivity extends AppCompatActivity {
         RadioButton ab = (RadioButton) findViewById(R.id.arabicButton);
         RadioButton eb = (RadioButton) findViewById(R.id.englishButton);
 
-        MessageStore.getInstance().firebasedatabase.getReference("users").child("a")
+        MessageStore.getInstance().firebasedatabase.getReference("user").child("a")
                 .push()
-                .setValue(new User(name.getText().toString(), ab.isChecked(), eb.isChecked())
+                .setValue(new User(name.getText().toString(), ab.isChecked(), eb.isChecked(), 0)
                 );
 
 

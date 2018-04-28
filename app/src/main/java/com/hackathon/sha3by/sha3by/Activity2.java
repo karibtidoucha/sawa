@@ -1,36 +1,31 @@
 package com.hackathon.sha3by.sha3by;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Activity2 extends AppCompatActivity {
+    private List<User> users;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        List<User> users =new ArrayList<>();
-        users.add(new User("Mohamed",true,false,1));
-        users.add(new User("Ferida",false,true,0));
-        users.add(new User("Ling",false,true,1));
-        User self=new User ("Farah",false,true,0);
-
-        for (int i =0; i<=3; i++){
-            if(users[i].ab==self.ab){
-
-            }
-
-        }
-
-
         super.onCreate(savedInstanceState);
         //Remove title bar
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -40,6 +35,19 @@ public class Activity2 extends AppCompatActivity {
 
         setContentView(R.layout.activity2);
 
+
+        users =new ArrayList<>();
+        users.add(new User("Mohamed",true,false,1));
+        users.add(new User("Ferida",false,true,0));
+        users.add(new User("Ling",false,true,1));
+        User self=new User ("Farah",false,true,0);
+
+        UserAdapter adapter=new UserAdapter(this, users);
+        ListView listView = findViewById(R.id.listview1);
+        listView.setAdapter(adapter);
+
+
+
         Button button = findViewById(R.id.third_activity);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,4 +56,32 @@ public class Activity2 extends AppCompatActivity {
             }
         });
     }
+
+    public class UserAdapter extends ArrayAdapter<User> {
+        private Context mContext;
+        private List<User> usersList = new ArrayList<>();
+
+        public UserAdapter(Context context, List<User> list) {
+            super(context, 0 , list);
+            mContext = context;
+            usersList = list;
+        }
+
+        @NonNull
+        @Override
+        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+            User user = users.get(position);
+
+            if(convertView==null){
+                convertView=getLayoutInflater().inflate(R.layout.user, parent, false);
+            }
+
+            TextView koala = convertView.findViewById(R.id.username);
+            koala.setText(user.name);
+
+            return convertView;
+        }
+    }
+
 }
+
