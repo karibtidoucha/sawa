@@ -16,6 +16,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -79,6 +80,14 @@ public class Activity2 extends AppCompatActivity {
 
             TextView koala = convertView.findViewById(R.id.username);
             koala.setText(user.name);
+            ImageView myAvatar=convertView.findViewById(R.id.userAvatar);
+                if(user.avatar==0){
+                    myAvatar.setImageResource(R.mipmap.avatar4);
+                }
+                if(user.avatar==1){
+                    myAvatar.setImageResource(R.mipmap.avatar3);
+                }
+
 
             return convertView;
         }
