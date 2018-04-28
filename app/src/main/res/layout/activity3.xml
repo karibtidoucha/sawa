@@ -11,5 +11,13 @@
     android:paddingTop="20dp"
     tools:context="com.hackathon.sha3by.sha3by.Activity3">
 
+    <ListView
+        android:id="@+id/messages"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    </ListView>
+
 
 </RelativeLayout>
