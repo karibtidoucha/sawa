@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -30,7 +31,7 @@ import java.util.List;
 
 public class Activity2 extends AppCompatActivity {
     private List<User> users = new ArrayList<>();
-    UserAdapter adapter = new UserAdapter(this, users);
+    UserAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,8 @@ public class Activity2 extends AppCompatActivity {
         setContentView(R.layout.activity2);
 
         ListView listView = findViewById(R.id.listview1);
+        adapter = new UserAdapter(this, users);
+
         listView.setAdapter(adapter);
 
 
@@ -59,15 +62,19 @@ public class Activity2 extends AppCompatActivity {
             }
         });
 
+
         MessageStore.getInstance().firebasedatabase.getReference().child("users").addValueEventListener(
                 new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         users.clear();
                         for(DataSnapshot userValue: dataSnapshot.getChildren()){
+
                             User user = userValue.getValue(User.class);
-                            users.add(user);
+                            if(user.name!=null) users.add(user);
                         }
+                        Log.e("WOO", "USERS CHANGED");
+                        Log.e("WOO", Integer.toString(users.size()));
                         adapter.notifyDataSetChanged();
                     }
 
@@ -101,11 +108,12 @@ public class Activity2 extends AppCompatActivity {
 
             TextView koala = convertView.findViewById(R.id.username);
             koala.setText(user.name);
+            Log.e("WOO", "RENDERING");
+
             ImageView myAvatar=convertView.findViewById(R.id.userAvatar);
                 if(user.avatar==0){
-                    myAvatar.setImageResource(R.mipmap.avatar4);
-                }
-                if(user.avatar==1){
+                    myAvatar.setImageResource(R.mipmap.hij);
+                } else {
                     myAvatar.setImageResource(R.mipmap.avatar3);
                 }
 

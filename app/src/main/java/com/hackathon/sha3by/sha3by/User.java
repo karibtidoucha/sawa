@@ -12,4 +12,7 @@ public class User {
         this.arabic = arabic;
     }
 
+    public User() {
+
+    }
 }
