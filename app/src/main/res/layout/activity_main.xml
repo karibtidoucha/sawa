@@ -17,30 +17,31 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="Sign Up" />
+        android:text="Sign Up"
+        />
 
     <EditText
         android:id="@+id/personName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="137dp"
+        android:layout_alignStart="@+id/second_activity"
+        android:layout_marginTop="112dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name" />
+        android:hint="Name"
+        android:inputType="textPersonName" />
 
     <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/second_activity"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="79dp"
+        android:layout_marginBottom="118dp"
         android:orientation="horizontal">
 
 
         <RadioButton
-            android:id="@+id/arabicButton"
+            android:id="@+id/englishButton"
             android:layout_width="86dp"
             android:layout_height="wrap_content"
             android:layout_alignEnd="@+id/textView"
@@ -49,7 +50,7 @@
             android:text="English" />
 
         <RadioButton
-            android:id="@+id/englishButton"
+            android:id="@+id/arabicButton"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/textView"
@@ -66,25 +67,11 @@
         android:layout_centerHorizontal="true"
         app:srcCompat="@mipmap/sawa_two" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="90dp"
-        android:text="Create an Account"
-        android:textColor="?attr/colorPrimary"
-        android:textSize="36sp"
-        android:textStyle="bold"
-        android:onClick="addUser"/>
 
     <RadioGroup
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="108dp"
+        android:layout_centerInParent="true"
         android:orientation="horizontal">
 
         <RadioButton
@@ -101,6 +88,5 @@
             android:layout_weight="1"
             android:drawableTop="@mipmap/hij" />
     </RadioGroup>
-
 
 </RelativeLayout>

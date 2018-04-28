@@ -1,12 +1,21 @@
 package com.hackathon.sha3by.sha3by;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableString;
 import android.text.Spanned;
+import android.text.TextPaint;
+import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -31,17 +40,19 @@ import android.view.Window;
 import android.view.WindowManager;
 
 public class Activity3 extends AppCompatActivity {
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //Remove title bar
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        //Remove title bar
+//        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         //Remove notification bar
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().hide();
+
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        String userName = sharedPref.getString("Name", "");
 
 
         setContentView(R.layout.activity3);
@@ -88,21 +99,30 @@ public class Activity3 extends AppCompatActivity {
                 TextView tv = v.findViewById(R.id.tv);
 
 
-//                int counter =0;
-//                for (String i : messageSplit) {
-//                    final String word = i;
-//                    ss.setSpan(new ClickableSpan() {
-//                        @Override
-//                        public void onClick(View view) {
-//                            Log.e("word",word);
-//                        }
-//                    }, counter,counter+i.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-//                    counter+=i.length()+1;
-//                }
+                int counter =0;
+                for (String i : messageSplit) {
+                    final String word = i;
+                    ss.setSpan(new ClickableSpan() {
+                        @Override
+                        public void onClick(View view) {
+                            Log.e("word",word);
+                        }
+                        @Override
+                        public void updateDrawState(TextPaint ds) {
+                            ds.setUnderlineText(false);
+                        }
+                    }, counter,counter+i.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    counter+=i.length()+1;
+                }
 
                 tv.setText(ss);
+                tv.setMovementMethod(LinkMovementMethod.getInstance());
 
             }
+
+
+
+
         };
 
 
@@ -130,3 +150,6 @@ public class Activity3 extends AppCompatActivity {
 //            TextView textView=(TextView)findViewById(R.id.hello);
 //            textView.setText(ss);
 //            textView.setMovementMethod(LinkMovementMethod.getInstance());
+
+
+

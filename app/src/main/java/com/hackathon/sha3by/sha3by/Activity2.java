@@ -1,6 +1,7 @@
 package com.hackathon.sha3by.sha3by;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -26,21 +27,21 @@ public class Activity2 extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        //Remove title bar
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        String userName = sharedPref.getString("Name", "");
 
-        //Remove notification bar
+        super.onCreate(savedInstanceState);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().hide();
 
         setContentView(R.layout.activity2);
 
 
         users =new ArrayList<>();
-        users.add(new User("Mohamed",true,false,1));
-        users.add(new User("Ferida",false,true,0));
-        users.add(new User("Ling",false,true,1));
-        User self=new User ("Farah",false,true,0);
+        users.add(new User("Mohamed",0,1));
+        users.add(new User("Ferida",0,0));
+        users.add(new User("Ling",1,1));
+        User self=new User ("Farah",1,0);
 
         UserAdapter adapter=new UserAdapter(this, users);
         ListView listView = findViewById(R.id.listview1);
