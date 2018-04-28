@@ -1,5 +1,8 @@
 package com.hackathon.sha3by.sha3by;
 
+import android.app.Activity;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableString;
@@ -8,7 +11,9 @@ import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -112,6 +117,10 @@ public class Activity3 extends AppCompatActivity {
                 tv.setMovementMethod(LinkMovementMethod.getInstance());
 
             }
+
+
+
+
         };
 
 
@@ -139,3 +148,6 @@ public class Activity3 extends AppCompatActivity {
 //            TextView textView=(TextView)findViewById(R.id.hello);
 //            textView.setText(ss);
 //            textView.setMovementMethod(LinkMovementMethod.getInstance());
+
+
+

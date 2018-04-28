@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
+    android:id="@+id/activity_3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="20dp"
@@ -26,7 +26,16 @@
         android:orientation="vertical"
         android:layout_below="@+id/ll1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+
+        android:clipToPadding="false"
+        android:focusableInTouchMode="true"
+        tools:context="com.example.scaledrone.chat.ChatPageFragment"
+        app:layout_constraintTop_toBottomOf="@id/header"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+
+        >
 
 
         <ListView
@@ -44,7 +53,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#fff"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            >
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
