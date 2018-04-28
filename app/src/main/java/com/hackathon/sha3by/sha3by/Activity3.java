@@ -53,8 +53,8 @@ public class Activity3 extends AppCompatActivity {
         });
         ListView messagelist = (ListView)findViewById(R.id.messages);
 
-        adapter = new FirebaseListAdapter<Message>(this,Message.class,
-                R.layout.activity3, FirebaseDatabase.getInstance().getReference()){
+        adapter = new FirebaseListAdapter<Message>(this, Message.class,
+                R.layout.activity3, MessageStore.getInstance().getReference()){
 
             @Override
             protected void populateView(View v, Message model, int position) {
