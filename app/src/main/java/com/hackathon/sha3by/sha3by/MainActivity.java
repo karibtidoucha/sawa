@@ -44,6 +44,10 @@ public class MainActivity extends AppCompatActivity {
         EditText name = (EditText) findViewById(R.id.personName);
         RadioButton ab = (RadioButton) findViewById(R.id.arabicButton);
 
+        MessageStore.getInstance().firebasedatabase.getReference("user").child("a")
+                .push()
+                .setValue(new User(name.getText().toString(), ab.isChecked() ? 0 : 1, 0)
+                );
         RadioButton b4 = (RadioButton) findViewById(R.id.radioButton4);
 
         MessageStore.getInstance().firebasedatabase.getReference("users").push()
