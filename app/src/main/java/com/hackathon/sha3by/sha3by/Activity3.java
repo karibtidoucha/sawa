@@ -2,6 +2,10 @@ package com.hackathon.sha3by.sha3by;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.ClickableSpan;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,19 +16,21 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.FirebaseDatabase;
 
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
 import java.text.DateFormat;
+
 import android.view.Window;
 import android.view.WindowManager;
 
 public class Activity3 extends AppCompatActivity {
-
 
 
     @Override
@@ -40,13 +46,13 @@ public class Activity3 extends AppCompatActivity {
 
         setContentView(R.layout.activity3);
         Button fab =
-                (Button)findViewById(R.id.b_send);
+                (Button) findViewById(R.id.b_send);
 
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditText input = (EditText)findViewById(R.id.input);
+                EditText input = (EditText) findViewById(R.id.input);
 
 
                 MessageStore.getInstance().firebasedatabase.getReference("message").child("a").child("b")
@@ -60,32 +66,67 @@ public class Activity3 extends AppCompatActivity {
         });
 
 
-       Query query = MessageStore.getInstance().firebasedatabase.getReference("message").child("a").child("b");
+        Query query = MessageStore.getInstance().firebasedatabase.getReference("message").child("a").child("b");
 
 
         FirebaseListOptions<Message> firebaseListOptions = new FirebaseListOptions.Builder<Message>()
                 .setQuery(query, Message.class).setLayout(R.layout.message).setLifecycleOwner(this).build();
 
-        ListAdapter firebaseListAdapter = new FirebaseListAdapter<Message>(firebaseListOptions)
-        {
+        ListAdapter firebaseListAdapter = new FirebaseListAdapter<Message>(firebaseListOptions) {
             @Override
             protected void populateView(View v, Message model, int position) {
                 // Get references to the views of message.xml
-                TextView messageText = (TextView) v.findViewById(R.id.message_text);
+//                TextView messageText = (TextView) v.findViewById(R.id.message_text);
+//                // Set their text
+//                messageText.setText(model.messageText);
 
 
-                // Set their text
-                messageText.setText(model.messageText);
+                String[] messageSplit = model.messageText.split(" ");
+                SpannableString ss = new SpannableString(model.messageText);
+
+
+                TextView tv = v.findViewById(R.id.tv);
+
+
+//                int counter =0;
+//                for (String i : messageSplit) {
+//                    final String word = i;
+//                    ss.setSpan(new ClickableSpan() {
+//                        @Override
+//                        public void onClick(View view) {
+//                            Log.e("word",word);
+//                        }
+//                    }, counter,counter+i.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+//                    counter+=i.length()+1;
+//                }
+
+                tv.setText(ss);
 
             }
         };
 
 
-        final ListView messagelist = (ListView)findViewById(R.id.messages);
+        final ListView messagelist = (ListView) findViewById(R.id.messages);
 
         messagelist
                 .setAdapter(firebaseListAdapter);
 
 
-        }
+    }
 }
+
+//
+//    SpannableString ss = new SpannableString("Android is a Software stack");
+//    ClickableSpan clickableSpan = new ClickableSpan() {
+//        @Override
+//        public void onClick(View textView) {
+//            startActivity(new Intent(MyActivity.this, NextActivity.class));
+//        }
+//    };
+//    ss.setSpan(clickableSpan,22,27,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+////where 22 and 27 are the starting and ending index of the String. Now word stack is clickable
+//// onClicking stack it will open NextActiivty
+//
+//            TextView textView=(TextView)findViewById(R.id.hello);
+//            textView.setText(ss);
+//            textView.setMovementMethod(LinkMovementMethod.getInstance());
