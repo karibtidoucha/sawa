@@ -111,6 +111,7 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/symbols" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/transforms" />
       <excludeFolder url="file://$MODULE_DIR$/build/outputs" />
+      <excludeFolder url="file://$MODULE_DIR$/build/reports" />
       <excludeFolder url="file://$MODULE_DIR$/build/tmp" />
     </content>
     <orderEntry type="jdk" jdkName="Android API 26 Platform" jdkType="Android SDK" />
@@ -152,6 +153,5 @@
     <orderEntry type="library" name="com.android.support:animated-vector-drawable-26.1.0" level="project" />
     <orderEntry type="library" name="com.google.firebase:firebase-common-11.0.4" level="project" />
     <orderEntry type="library" name="com.google.firebase:firebase-analytics-impl-11.0.4" level="project" />
-    <orderEntry type="library" scope="TEST" name="com.android.support:support-annotations:27.1.1@jar" level="project" />
   </component>
 </module>
