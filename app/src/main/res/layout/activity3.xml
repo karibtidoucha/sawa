@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_3"
@@ -16,22 +17,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
+            app:layout_constraintTop_toTopOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text = "NAME"/>
     </LinearLayout>
 
     <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/ll2"
+
         android:orientation="vertical"
         android:layout_below="@+id/ll1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
 
         android:clipToPadding="false"
         android:focusableInTouchMode="true"
-        tools:context="com.example.scaledrone.chat.ChatPageFragment"
-        app:layout_constraintTop_toBottomOf="@id/header"
+        tools:context="com.hackathon.sha3by.sha3by.Activity3"
+        app:layout_constraintTop_toBottomOf="@id/ll1"
         app:layout_constraintBottom_toBottomOf="parent"
 
 
@@ -50,11 +55,15 @@
             />
 
         <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#fff"
             android:orientation="horizontal"
-            >
+            app:layout_constraintBottom_toBottomOf="@id/activity_3"
+
+
+        >
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -62,7 +71,6 @@
                 android:hint="Input"
                 android:id="@+id/input"
                 android:ems="10"
-
                 android:paddingHorizontal="10dp"
 
                 />
@@ -71,6 +79,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:text="GO"
                />
 
 
@@ -84,4 +93,4 @@
 
 
 
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

@@ -56,6 +56,9 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("Name", name.getText().toString());
+        editor.putInt("Arabic", ab.isChecked() ? 1 : 0);
+        editor.putInt("Avatar", b4.isChecked() ? 0 : 1);
+
         editor.commit();
 
     }
