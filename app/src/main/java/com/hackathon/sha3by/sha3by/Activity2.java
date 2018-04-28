@@ -11,10 +11,26 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
+import java.util.ArrayList;
+
 public class Activity2 extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        List<User> users =new ArrayList<>();
+        users.add(new User("Mohamed",true,false,1));
+        users.add(new User("Ferida",false,true,0));
+        users.add(new User("Ling",false,true,1));
+        User self=new User ("Farah",false,true,0);
+
+        for (int i =0; i<=3; i++){
+            if(users[i].ab==self.ab){
+
+            }
+
+        }
+
+
         super.onCreate(savedInstanceState);
         //Remove title bar
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);

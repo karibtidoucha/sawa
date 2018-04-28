@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,5 +30,18 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, Activity2.class));
             }
         });
+    }
+
+    public void addUser(){
+        EditText name = (EditText) findViewById(R.id.personName);
+        RadioButton ab = (RadioButton) findViewById(R.id.arabicButton);
+        RadioButton eb = (RadioButton) findViewById(R.id.englishButton);
+
+        MessageStore.getInstance().firebasedatabase.getReference("users").child("a")
+                .push()
+                .setValue(new User(name.getText().toString(), ab.isChecked(), eb.isChecked())
+                );
+
+
     }
 }
