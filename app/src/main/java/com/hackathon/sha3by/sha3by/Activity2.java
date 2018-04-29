@@ -3,6 +3,7 @@ package com.hackathon.sha3by.sha3by;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -35,11 +36,6 @@ public class Activity2 extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
-        String userName = sharedPref.getString("Name", "");
-        int arabic = sharedPref.getInt("Arabic", 0);
-        int avatar = sharedPref.getInt("Avatar", 0);
-        User currUser = new User(userName, arabic, avatar);
 
         super.onCreate(savedInstanceState);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -47,20 +43,36 @@ public class Activity2 extends AppCompatActivity {
 
         setContentView(R.layout.activity2);
 
+
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        String userName = sharedPref.getString("Name", "");
+        int arabic = sharedPref.getInt("Arabic", 0);
+        int avatar = sharedPref.getInt("Avatar", 0);
+        final User currUser = new User(userName, arabic, avatar);
+
+        TextView currentuser = findViewById(R.id.currentuser);
+        ImageView currentuserimage = findViewById(R.id.currentuserimage);
+
+        currentuser.setText(currUser.name);
+        Log.e("WOO","nnnnn2nnnnnnnnn");
+        Log.e("WOO",userName);
+        Log.e("WOO",currUser.name);
+        Log.e("WOO","nnnnnnnnnnnnnn");
+
+        if(currUser.avatar!=0){
+            currentuserimage.setImageResource(R.mipmap.hij);
+        } else {
+            currentuserimage.setImageResource(R.mipmap.avatar3);
+        }
+
+
+
         ListView listView = findViewById(R.id.listview1);
         adapter = new UserAdapter(this, users);
 
         listView.setAdapter(adapter);
 
 
-
-        Button button = findViewById(R.id.third_activity);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(Activity2.this, Activity3.class));
-            }
-        });
 
 
         MessageStore.getInstance().firebasedatabase.getReference().child("users").addValueEventListener(
@@ -71,7 +83,8 @@ public class Activity2 extends AppCompatActivity {
                         for(DataSnapshot userValue: dataSnapshot.getChildren()){
 
                             User user = userValue.getValue(User.class);
-                            if(user.name!=null) users.add(user);
+                            Log.e("testbug1",user.name+" "+user.arabic+" "+ user.avatar);
+                            if(user.name!=null && user.name.length()>3 && user.arabic != currUser.arabic) users.add(user);
                         }
                         Log.e("WOO", "USERS CHANGED");
                         Log.e("WOO", Integer.toString(users.size()));
@@ -129,7 +142,7 @@ public class Activity2 extends AppCompatActivity {
             Log.e("WOO", "RENDERING");
 
             ImageView myAvatar=convertView.findViewById(R.id.userAvatar);
-                if(user.avatar==0){
+                if(user.avatar!=0){
                     myAvatar.setImageResource(R.mipmap.hij);
                 } else {
                     myAvatar.setImageResource(R.mipmap.avatar3);

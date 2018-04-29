@@ -12,37 +12,57 @@
     android:paddingTop="20dp"
     tools:context="com.hackathon.sha3by.sha3by.Activity2">
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/temp1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        app:srcCompat="@mipmap/avatar3" />
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/currentuserimage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@mipmap/avatar3" />
+
+        <TextView
+            android:id="@+id/currentuser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:textColor="?attr/colorPrimary"
+            android:textSize="24sp"
+            android:paddingLeft="20dp"
+           />
+
+
+    </LinearLayout>
+
+
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="70dp"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/third_activity"
-        android:layout_alignRight="@+id/third_activity"
-        android:layout_below="@+id/imageView3"
-        android:text="Name" />
+        android:padding="20dp"
 
-    <TextView
         android:id="@+id/textView2"
         android:layout_width="343dp"
         android:layout_height="wrap_content"
         android:text="Users Matching Your Skills"
         android:textColor="?attr/colorPrimary"
         android:textSize="24sp" />
+    <Button
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FIND NEW USER"
+        />
 
     <ListView
+
         android:id="@+id/listview1"
         android:layout_width="match_parent"
-        android:layout_height="311dp"
+        android:layout_height="wrap_content"
         android:layout_centerInParent="true">
 
     </ListView>
+
+
 </LinearLayout>

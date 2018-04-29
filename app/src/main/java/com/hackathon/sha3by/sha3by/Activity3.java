@@ -8,6 +8,8 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputFilter;
 import android.text.Spannable;
@@ -53,11 +55,11 @@ public class Activity3 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         String userName = sharedPref.getString("Name", "");
         int arabic = sharedPref.getInt("Arabic", 0);
         int avatar = sharedPref.getInt("Avatar", 0);
-        User currUser = new User(userName, arabic, avatar);
+        final User currUser = new User(userName, arabic, avatar);
 
 
         String username = getIntent().getExtras().get("username").toString();
@@ -65,10 +67,14 @@ public class Activity3 extends AppCompatActivity {
         final String first;
         final String second;
 
+
         if (username.compareTo(ourname)>0) {first = username; second = ourname;}
         else {first = ourname; second = username;}
 
-
+        Log.e("first",first.toString());
+        Log.e("second",second.toString());
+        Log.e("ourname",ourname.toString());
+        Log.e("Username",username.toString());
 
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
@@ -124,7 +130,7 @@ public class Activity3 extends AppCompatActivity {
 
                     MessageStore.getInstance().firebasedatabase.getReference("message").child(first).child(second)
                             .push()
-                            .setValue(new Message(input.getText().toString())
+                            .setValue(new Message(input.getText().toString(),currUser.arabic)
                             );
                 }
 
@@ -165,19 +171,13 @@ public class Activity3 extends AppCompatActivity {
                             alertDialogBuilder.setView(promptView);
 
                             TextView textview = new TextView(context);
+                            //here API
                             textview.setText("2222");
 
                             alertDialogBuilder.setCancelable(false).setView(textview);
 
                             AlertDialog alertDialog = alertDialogBuilder.create();
                             alertDialog.show();
-
-
-
-
-
-
-
 
                         }
                         @Override
@@ -189,6 +189,10 @@ public class Activity3 extends AppCompatActivity {
                 }
 
                 tv.setText(ss);
+                if (model.language==1){
+                    tv.setBackgroundResource(R.drawable.rounded_rectangle2);
+                }
+
                 tv.setMovementMethod(LinkMovementMethod.getInstance());
 
             }
