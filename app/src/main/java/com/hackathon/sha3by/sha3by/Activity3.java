@@ -9,6 +9,7 @@ import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputFilter;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -78,11 +79,16 @@ public class Activity3 extends AppCompatActivity {
 
 
         final EditText input = (EditText) findViewById(R.id.input);
+
+
         input.addTextChangedListener(new TextWatcher() {
 
 
             @Override
             public void afterTextChanged(Editable s) {
+
+                String arabicOnly  = s.toString().replaceAll("[a-zA-Z0-9?\\.!]","");
+                Log.e("text",arabicOnly);
 
                 if (s.toString().length()>3 && !(s.toString().equals(lastText) )){
                     lastText = s.toString();
@@ -158,29 +164,14 @@ public class Activity3 extends AppCompatActivity {
                             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
                             alertDialogBuilder.setView(promptView);
 
+                            TextView textview = new TextView(context);
+                            textview.setText("2222");
+
+                            alertDialogBuilder.setCancelable(false).setView(textview);
+
                             AlertDialog alertDialog = alertDialogBuilder.create();
                             alertDialog.show();
 
-
-//
-//                                // set dialog message
-//                                alertDialogBuilder
-//                                        .setCancelable(false)
-//                                        .setPositiveButton("OK",
-//                                                new DialogInterface.OnClickListener() {
-//                                                    public void onClick(DialogInterface dialog,int id) {
-//                                                        // get user input and set it to result
-//                                                        // edit text
-//                                                        result.setText(userInput.getText());
-//                                                    }
-//                                                })
-//                                        .setNegativeButton("Cancel",
-//                                                new DialogInterface.OnClickListener() {
-//                                                    public void onClick(DialogInterface dialog,int id) {
-//                                                        dialog.cancel();
-//                                                    }
-//                                                });
-//
 
 
 
