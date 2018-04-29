@@ -52,6 +52,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 
 public class Activity3 extends AppCompatActivity
 {
@@ -182,6 +183,12 @@ public class Activity3 extends AppCompatActivity
 
                                 }
                             });
+                            alertDialogBuilder.setNegativeButton("Help" ,new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+
+                                }
+                            });
 
                             alertDialogBuilder.setCancelable(true);
                             alertDialogBuilder.setTitle(word);
@@ -189,7 +196,7 @@ public class Activity3 extends AppCompatActivity
                             //here API
                             textview.setText("Meaning: ");
                             textview.setText("dictionary");
-                            new GetDefinition(textview).execute("http://18.216.224.250:8000/dictionary/"+arabicOnly(word));
+                            new GetDefinition(textview).execute("http://18.216.224.250:8000/dictionary/"+ URLEncoder.encode(arabicOnly(word)));
 
                             alertDialogBuilder.setCancelable(false).setView(textview);
 
@@ -266,7 +273,7 @@ public class Activity3 extends AppCompatActivity
                  StringBuilder stringBuilder = new StringBuilder();
                  //Check if the line we are reading is not null
                  while((inputLine = reader.readLine()) != null){
-                     stringBuilder.append(inputLine);
+                     stringBuilder.append(inputLine +"\n");
                  }
                  //Close our InputStream and Buffered reader
                  reader.close();
