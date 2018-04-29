@@ -31,7 +31,8 @@
         android:ems="10"
         android:backgroundTint="@color/white"
         android:hint="Name"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:layout_alignLeft="@+id/second_activity" />
 
     <RadioGroup
         android:layout_width="wrap_content"
@@ -39,7 +40,8 @@
         android:layout_alignEnd="@+id/second_activity"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="118dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_alignRight="@+id/second_activity">
 
 
         <RadioButton
@@ -50,7 +52,8 @@
             android:layout_centerVertical="true"
             android:layout_weight="1"
             android:buttonTint="@color/white"
-            android:text="English" />
+            android:text="English"
+            android:layout_alignRight="@+id/textView" />
 
         <RadioButton
             android:id="@+id/arabicButton"
@@ -60,7 +63,8 @@
             android:layout_centerVertical="true"
             android:layout_weight="1"
             android:buttonTint="@color/white"
-            android:text="Arabic" />
+            android:text="Arabic"
+            android:layout_alignLeft="@+id/textView" />
     </RadioGroup>
 
     <ImageButton

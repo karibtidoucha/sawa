@@ -1,6 +1,7 @@
 package com.hackathon.sha3by.sha3by;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -15,6 +16,7 @@ import android.text.TextPaint;
 import android.text.TextWatcher;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
+import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -44,16 +46,31 @@ import android.view.WindowManager;
 public class Activity3 extends AppCompatActivity {
 
     private String lastText = "";
+    final Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getSupportActionBar().hide();
-
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         String userName = sharedPref.getString("Name", "");
+        int arabic = sharedPref.getInt("Arabic", 0);
+        int avatar = sharedPref.getInt("Avatar", 0);
+        User currUser = new User(userName, arabic, avatar);
+
+
+        String username = getIntent().getExtras().get("username").toString();
+        String ourname = currUser.name;
+        final String first;
+        final String second;
+
+        if (username.compareTo(ourname)>0) {first = username; second = ourname;}
+        else {first = ourname; second = username;}
+
+
+
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().hide();
 
 
         setContentView(R.layout.activity3);
@@ -71,9 +88,12 @@ public class Activity3 extends AppCompatActivity {
                     lastText = s.toString();
                     Log.e("TEST", s.toString());
                     Spannable spannable=new SpannableString(s.toString());
-                    spannable.setSpan(new StyleSpan(Typeface.BOLD), 0, 2, 0);
+                    spannable.setSpan(new ForegroundColorSpan(Color.RED), 0, 2, 0);
+                    //change this
                     input.setText(spannable);
+
                 }
+                input.setSelection(input.getText().length());
 
             }
 
@@ -96,19 +116,19 @@ public class Activity3 extends AppCompatActivity {
 
                 if (!input.getText().toString().equals("")) {
 
-                    MessageStore.getInstance().firebasedatabase.getReference("message").child("a").child("b")
+                    MessageStore.getInstance().firebasedatabase.getReference("message").child(first).child(second)
                             .push()
                             .setValue(new Message(input.getText().toString())
                             );
                 }
 
-                // Clear the input
+
                 input.setText("");
             }
         });
 
 
-        Query query = MessageStore.getInstance().firebasedatabase.getReference("message").child("a").child("b");
+        Query query = MessageStore.getInstance().firebasedatabase.getReference("message").child(first).child(second);
 
 
         FirebaseListOptions<Message> firebaseListOptions = new FirebaseListOptions.Builder<Message>()
@@ -131,7 +151,43 @@ public class Activity3 extends AppCompatActivity {
                         @Override
                         public void onClick(View view) {
                             Log.e("word",word);
-                            //push out a pop up
+
+                            LayoutInflater li = LayoutInflater.from(context);
+                            View promptView  = li.inflate(R.layout.prompt,null);
+
+                            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+                            alertDialogBuilder.setView(promptView);
+
+                            AlertDialog alertDialog = alertDialogBuilder.create();
+                            alertDialog.show();
+
+
+//
+//                                // set dialog message
+//                                alertDialogBuilder
+//                                        .setCancelable(false)
+//                                        .setPositiveButton("OK",
+//                                                new DialogInterface.OnClickListener() {
+//                                                    public void onClick(DialogInterface dialog,int id) {
+//                                                        // get user input and set it to result
+//                                                        // edit text
+//                                                        result.setText(userInput.getText());
+//                                                    }
+//                                                })
+//                                        .setNegativeButton("Cancel",
+//                                                new DialogInterface.OnClickListener() {
+//                                                    public void onClick(DialogInterface dialog,int id) {
+//                                                        dialog.cancel();
+//                                                    }
+//                                                });
+//
+
+
+
+
+
+
+
                         }
                         @Override
                         public void updateDrawState(TextPaint ds) {

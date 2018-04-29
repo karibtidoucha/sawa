@@ -97,6 +97,22 @@ public class Activity2 extends AppCompatActivity {
             usersList = list;
         }
 
+
+        class customListener implements View.OnClickListener{
+            public User user;
+            public customListener(User user){
+                super();
+                this.user  = user;
+
+            }
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Activity2.this, Activity3.class);
+                intent.putExtra("username", this.user.name);
+                startActivity(intent);
+            }
+
+        }
         @NonNull
         @Override
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -106,6 +122,8 @@ public class Activity2 extends AppCompatActivity {
                 convertView=getLayoutInflater().inflate(R.layout.user, parent, false);
             }
 
+
+            convertView.setOnClickListener(new customListener(user));
             TextView koala = convertView.findViewById(R.id.username);
             koala.setText(user.name);
             Log.e("WOO", "RENDERING");
