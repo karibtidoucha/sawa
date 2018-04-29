@@ -3,10 +3,12 @@ package com.hackathon.sha3by.sha3by;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.content.ContextCompat;
@@ -170,10 +172,19 @@ public class Activity3 extends AppCompatActivity
 
                             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
                             alertDialogBuilder.setView(promptView);
+                            alertDialogBuilder.setPositiveButton("Close", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
 
+                                }
+                            });
+
+                            alertDialogBuilder.setCancelable(true);
+                            alertDialogBuilder.setTitle(word);
                             TextView textview = new TextView(context);
                             //here API
-                            textview.setText("2222");
+                            textview.setText("Meaning: ");
+                            textview.setText("dictionary");
 
                             alertDialogBuilder.setCancelable(false).setView(textview);
 
@@ -211,4 +222,28 @@ public class Activity3 extends AppCompatActivity
                 .setAdapter(firebaseListAdapter);
 
     }
+
+    public static String ArabicOnly(String st)
+
+    {
+        String arabicOnly  = st.toString().replaceAll("[a-zA-Z0-9?\\.!]","");
+        Log.e("text",arabicOnly);
+        return arabicOnly;
+    }
+
+     class GetDefinition extends AsyncTask<String, Integer, String>
+     {
+         TextView tv;
+         GetDefinition(TextView tv)
+         {
+
+             this.tv = tv;
+
+         }
+         public String 
+
+     }
 }
+
+
+
