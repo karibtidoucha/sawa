@@ -12,36 +12,34 @@
     android:paddingTop="20dp"
     tools:context="com.hackathon.sha3by.sha3by.MainActivity"
     >
+
     <Button
         android:id="@+id/second_activity"
-        android:layout_width="202dp"
+        android:layout_width="263dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="Sign Up"
-        />
+        android:text="Sign Up" />
 
     <EditText
         android:id="@+id/personName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/second_activity"
-        android:layout_marginTop="112dp"
-        android:ems="10"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="95dp"
         android:backgroundTint="@color/white"
+        android:ems="10"
         android:hint="Name"
-        android:inputType="textPersonName"
-        android:layout_alignLeft="@+id/second_activity" />
+        android:inputType="textPersonName" />
 
     <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/second_activity"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="118dp"
-        android:orientation="horizontal"
-        android:layout_alignRight="@+id/second_activity">
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="124dp"
+        android:orientation="horizontal">
 
 
         <RadioButton
@@ -49,22 +47,22 @@
             android:layout_width="86dp"
             android:layout_height="wrap_content"
             android:layout_alignEnd="@+id/textView"
+            android:layout_alignRight="@+id/textView"
             android:layout_centerVertical="true"
             android:layout_weight="1"
             android:buttonTint="@color/white"
-            android:text="English"
-            android:layout_alignRight="@+id/textView" />
+            android:text="English" />
 
         <RadioButton
             android:id="@+id/arabicButton"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView"
             android:layout_alignStart="@+id/textView"
             android:layout_centerVertical="true"
             android:layout_weight="1"
             android:buttonTint="@color/white"
-            android:text="Arabic"
-            android:layout_alignLeft="@+id/textView" />
+            android:text="Arabic" />
     </RadioGroup>
 
     <ImageButton
