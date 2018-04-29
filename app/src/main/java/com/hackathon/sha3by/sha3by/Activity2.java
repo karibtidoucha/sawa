@@ -84,7 +84,7 @@ public class Activity2 extends AppCompatActivity {
 
                             User user = userValue.getValue(User.class);
                             Log.e("testbug1",user.name+" "+user.arabic+" "+ user.avatar);
-                            if(user.name!=null && user.name.length()>3 && user.arabic != currUser.arabic) users.add(user);
+                            if(user.name!=null && user.name.length()>1 && user.arabic != currUser.arabic) users.add(user);
                         }
                         Log.e("WOO", "USERS CHANGED");
                         Log.e("WOO", Integer.toString(users.size()));
