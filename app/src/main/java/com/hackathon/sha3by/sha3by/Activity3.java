@@ -48,11 +48,15 @@ import com.google.firebase.database.Query;
 
 import android.view.WindowManager;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.List;
 
 public class Activity3 extends AppCompatActivity
 {
@@ -96,6 +100,8 @@ public class Activity3 extends AppCompatActivity
         final EditText input = (EditText) findViewById(R.id.input);
 
 
+
+
         input.addTextChangedListener(new TextWatcher() {
 
 
@@ -107,14 +113,10 @@ public class Activity3 extends AppCompatActivity
 
                 if (s.toString().length()>3 && !(s.toString().equals(lastText) )){
                     lastText = s.toString();
-                    Log.e("TEST", s.toString());
-                    Spannable spannable=new SpannableString(s.toString());
-                    spannable.setSpan(new ForegroundColorSpan(Color.RED), 0, 2, 0);
-                    //change this
-                    input.setText(spannable);
+                    final GetDifficulty gfd=new GetDifficulty(input);
+                    gfd.execute(s.toString());
 
                 }
-                input.setSelection(input.getText().length());
 
             }
 
@@ -292,6 +294,87 @@ public class Activity3 extends AppCompatActivity
              tv.setText(result);
          }
          }
+    class GetDifficulty extends AsyncTask<String, Integer, JSONArray >
+    {
+        final EditText input;
+        String inputLine;
+        String result;
+        String [] arabicList;
+        String URL_2 ="http://18.216.224.250:8000/difficulty/";
+        GetDifficulty(EditText input)
+        {
+
+             this.input = input;
+
+        }
+        @Override
+        protected JSONArray doInBackground(String... params){
+            String sentence = params[0];
+
+
+            try {
+                //Create a URL object holding our url
+                String arabic=arabicOnly(sentence);
+                Log.e("SPACE ERORR",arabic);
+                arabicList=arabic.split(" ");
+                Log.e( "koala",URL_2 + URLEncoder.encode(arabic).replace("+", "%20"));
+                URL myUrl = new URL(URL_2 + URLEncoder.encode(arabic).replace("+", "%20"));
+                //Create a connection
+                HttpURLConnection connection =(HttpURLConnection)
+                        myUrl.openConnection();
+                InputStreamReader streamReader = new
+                        InputStreamReader(connection.getInputStream());
+                //Create a new buffered reader and String Builder
+                BufferedReader reader = new BufferedReader(streamReader);
+                StringBuilder stringBuilder = new StringBuilder();
+                //Check if the line we are reading is not null
+                while((inputLine = reader.readLine()) != null){
+                    stringBuilder.append(inputLine);
+                }
+                //Close our InputStream and Buffered reader
+                reader.close();
+                streamReader.close();
+                //Set our result equal to our stringBuilder
+                result = stringBuilder.toString();
+
+                Log.e("SPACE ERORR",result);
+
+                JSONArray son =new JSONArray(result);
+                return son;
+
+            } catch(Exception e) {
+                Log.e("HASTPS ERROR",e.getMessage());
+            }
+            return null;
+
+        }
+
+        protected void onPostExecute(JSONArray son) {
+            try{
+                String sentence= input.getText().toString();
+                Spannable spannable=new SpannableString(sentence.toString());
+                for(int i=0;i<son.length();i++){
+                    Integer wordIndex= son.getInt(i);
+                    String badWord=arabicList[wordIndex];
+                    Log.e("SPACE ERORR",badWord);
+
+                    int pos= sentence.indexOf(badWord);
+
+                    if(pos!=-1 && pos+badWord.length()<sentence.length()){
+                        spannable.setSpan(new ForegroundColorSpan(Color.RED), pos, pos+badWord.length(), 0);
+                    }
+
+                    //change this
+                    input.setText(spannable);
+                }
+
+            }
+            catch(Exception e) {
+                Log.e("HASTPS ERROR",e.getMessage());
+            }
+
+        }
+    }
 }
 
 

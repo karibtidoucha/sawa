@@ -50,12 +50,12 @@
             android:id="@+id/messages"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:divider="#fff"
             android:layout_weight="2"
-            android:transcriptMode="alwaysScroll"
+            android:divider="#fff"
+            android:scrollbars="vertical"
             android:stackFromBottom="true"
 
-            />
+            android:transcriptMode="alwaysScroll" />
 
         <LinearLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
