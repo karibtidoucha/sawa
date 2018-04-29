@@ -46,7 +46,8 @@ import com.google.firebase.database.Query;
 
 import android.view.WindowManager;
 
-public class Activity3 extends AppCompatActivity {
+public class Activity3 extends AppCompatActivity
+{
 
     private String lastText = "";
     final Context context = this;
@@ -191,6 +192,10 @@ public class Activity3 extends AppCompatActivity {
                 tv.setText(ss);
                 if (model.language==1){
                     tv.setBackgroundResource(R.drawable.rounded_rectangle2);
+                }
+        else
+                {
+                    tv.setBackgroundResource(R.drawable.rounded_rectangle);
                 }
 
                 tv.setMovementMethod(LinkMovementMethod.getInstance());
