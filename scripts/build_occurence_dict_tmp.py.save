@@ -1,0 +1,17 @@
+import scripts.sawaFunctions
+import pickle
+
+with open('data/LM.lev') as f:
+	examples = f.readlines()
+
+with open('histograms/hist.RP.lev') as f:
+	phrases = f.readlines()
+	phrases = [x.split()[1] for x in phrases]
+
+occur = {phrase: [] for phrase in phrases}
+
+for i, phrase in enumerate(phrases):
+	phrase = phrase.replace('_', ' ')
+	for ind, example in enumerate(examples):
+		if phrase in example:
+			occur[phrase].append(ind)
